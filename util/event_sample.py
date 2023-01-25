@@ -6,7 +6,7 @@ import case_paths.util.result_writer as rw
 import case_paths.path_constants.sample_dict as sd
 import case_paths.util.data_converter as conv
 import case_paths.util.utility_fun as utfu
-import sarewt.data_reader as dare
+import case_readers.data_reader as dare
 
 
 class EventSample():

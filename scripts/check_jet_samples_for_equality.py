@@ -1,4 +1,4 @@
-import sarewt.data_reader as dare
+import case_readers.data_reader as dare
 import case_paths.jet_sample as jesa
 import case_paths.path_constants.sample_dict_file_parts_input as sdfi
 import os

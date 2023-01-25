@@ -2,7 +2,7 @@ import pandas as pd
 import random
 import numpy as np
 
-import sarewt.data_reader as dr
+import case_readers.data_reader as dr
 import case_paths.util.result_writer as rw
 
 """ module containing wrapper for a dijet sample (with 2 jets having M features in phase space) 
