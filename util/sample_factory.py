@@ -37,7 +37,7 @@ class SamplePathDirFactory():
             pathlib.Path(s_path).mkdir(parents=True, exist_ok=True) # have to create directory for each sample here when writing results, not optimal, TODO: fix
         return s_path
 
-    def sample_file_path(self, id, mkdir=False):
+    def sample_file_path(self, id, mkdir=False,overwrite=False,customname=None):
         #print("XXX")
         #print(self.sample_files)
         s_path = self.sample_dir_path(id, mkdir)
@@ -45,7 +45,11 @@ class SamplePathDirFactory():
         #print("HAAAAAAA")
         #print(self.sample_files)
         #print(id)
-        return os.path.join(s_path, self.sample_files[id]+'.h5')
+        if overwrite == False:
+            return os.path.join(s_path, self.sample_files[id]+'.h5')
+        else:
+            print(os.path.join(s_path, customname+'.h5'))
+            return os.path.join(s_path, customname+'.h5')
 
 
 ##### utility functions
