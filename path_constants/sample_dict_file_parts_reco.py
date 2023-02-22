@@ -15,7 +15,9 @@ update_dict = {
 		'qcdSigMCReco': 'qcd_sig_MC_RECO',
 		'qcdSigTestReco': 'qcd_sig_Test_RECO',
 		'qcdSigMCOrigReco': 'qcd_sig_orig_RECO',
-		'qcdSigQRReco': 'qcd_sig_QR_RECO',
+		'qcdSigMCOrigReco_mixedJets': 'qcd_sig_orig_RECO_mixed_jets', # mixed jets
+        'qcdSigMCOrigReco_injectedJets': 'qcd_sig_orig_RECO_injected_jets', # injected jets
+        'qcdSigQRReco': 'qcd_sig_QR_RECO',
 		'qcdSigQRTrainReco': 'qcd_sig_Train_QR_RECO',
 		'qcdSigQRTestReco': 'qcd_sig_Test_QR_RECO',
                 'qcdSigExtReco': 'qcd_ext_sig_RECO',

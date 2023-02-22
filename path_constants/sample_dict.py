@@ -18,6 +18,8 @@ path_dict = {
                 'qcdSigAllTestReco' : 'sig_qcdSigReco',
                 'qcdSigQRTestReco': 'sig_mixed_QR_Test_Reco',
                 'qcdSigMCOrigReco': 'sig_MCOrig_QR_Reco',
+                'qcdSigMCOrigReco_mixedJets': 'sig_MCOrig_QR_Reco_Mixed_Jets', # To store jets with mixing/re-sampling
+                'qcdSigMCOrigReco_injectedJets': 'sig_MCOrig_QR_Reco_Injected_Jets', # To store jets with injected signal
                 'WkkToWRadionToWWW_M3000_Mr170Reco': 'WkkToWRadionToWWW_M3000_Mr170Reco',
                 'XToYYprimeTo4Q_MX3000_MY400_MYprime170_narrowReco': 'XToYYprimeTo4Q_MX3000_MY400_MYprime170_narrowReco',
                 'wkkSigReco' : 'sig_wkkSigReco'
