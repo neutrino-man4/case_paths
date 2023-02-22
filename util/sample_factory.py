@@ -18,7 +18,7 @@ class SamplePathDirFactory():
         self.base_dir = utfu.multi_replace(self.base_dir, repl_dict)
         return self
 
-    def sample_dir_path(self, id, mkdir=False):
+    def sample_dir_path(self, id, additional_id=None, mkdir=False):
         #print(self.sample_dir)
         #print("hereeee")
         #print(self.sample_dir)
@@ -31,16 +31,19 @@ class SamplePathDirFactory():
             print("WTF!!!")
 
         s_path = os.path.join(self.base_dir, self.sample_dir[id])
-
+        if (bool(additional_id)):
+            s_path = os.path.join(self.base_dir, self.sample_dir[id],self.sample_dir[additional_id])
+            
         #print("WEIRRD!")
         if mkdir:
             pathlib.Path(s_path).mkdir(parents=True, exist_ok=True) # have to create directory for each sample here when writing results, not optimal, TODO: fix
         return s_path
 
-    def sample_file_path(self, id, mkdir=False,overwrite=False,customname=None):
+    def sample_file_path(self, id, additional_id=None,mkdir=False,overwrite=False,customname=None):
         #print("XXX")
         #print(self.sample_files)
-        s_path = self.sample_dir_path(id, mkdir)
+        #print(additional_id)
+        s_path = self.sample_dir_path(id, additional_id=additional_id,mkdir=True)
 
         #print("HAAAAAAA")
         #print(self.sample_files)
