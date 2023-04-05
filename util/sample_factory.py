@@ -43,7 +43,7 @@ class SamplePathDirFactory():
         #print("XXX")
         #print(self.sample_files)
         #print(additional_id)
-        s_path = self.sample_dir_path(id, additional_id=additional_id,mkdir=True)
+        s_path = self.sample_dir_path(id, additional_id=additional_id,mkdir=mkdir)
 
         #print("HAAAAAAA")
         #print(self.sample_files)
@@ -53,8 +53,8 @@ class SamplePathDirFactory():
         else:
             print(os.path.join(s_path, customname+'.h5'))
             return os.path.join(s_path, customname+'.h5')
-
-
+    
+    
 ##### utility functions
 
 def read_inputs_to_sample_dict_from_file(sample_ids, paths):
@@ -63,6 +63,9 @@ def read_inputs_to_sample_dict_from_file(sample_ids, paths):
         data[sample_id] = js.JetSample.from_input_file(sample_id, read_fun(sample_id))
     return data
 
+
+
+
 def read_inputs_to_sample_dict_from_dir(sample_ids, paths, cls, read_n=None, **cuts):
     data = OrderedDict()
     for sample_id in sample_ids:
@@ -70,6 +73,19 @@ def read_inputs_to_sample_dict_from_dir(sample_ids, paths, cls, read_n=None, **c
         data[sample_id] = cls.from_input_dir(sample_id, paths.sample_dir_path(sample_id), read_n=read_n, **cuts)
     return data
 
+def read_inputs_to_sample_dict_from_dir_with_JE_tags(sample_ids, paths, JE_tags, cls, read_n=None, **cuts):
+    data = OrderedDict()
+    for sample_id in sample_ids:
+        for tag in JE_tags:
+            print('reading ', os.path.join(paths.sample_dir_path(sample_id),tag))
+            try:
+                data[sample_id+f'_{tag}'] = cls.from_input_dir(sample_id+f'_{tag}', os.path.join(paths.sample_dir_path(sample_id),tag), read_n=read_n, **cuts)
+                if tag == 'nominal':
+                    data['weights']=dr.CaseDataReader(os.path.join(paths.sample_dir_path(sample_id),tag)).read_weights_from_dir()
+                    # Additionally for the nominal file, we add the systematic uncertainty weights as an additional column to the dataset. 
+            except:
+                pass # in case the tag does not exist
+    return data
 def read_inputs_to_jet_sample_dict_from_dir(sample_ids, paths, read_n=None, **cuts):
     ''' read dictionary of JetSamples '''
     return read_inputs_to_sample_dict_from_dir(sample_ids, paths, jesa.JetSample, read_n=read_n, **cuts)
