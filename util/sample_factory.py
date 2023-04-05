@@ -90,6 +90,10 @@ def read_inputs_to_jet_sample_dict_from_dir(sample_ids, paths, read_n=None, **cu
     ''' read dictionary of JetSamples '''
     return read_inputs_to_sample_dict_from_dir(sample_ids, paths, jesa.JetSample, read_n=read_n, **cuts)
 
+def read_inputs_to_jet_sample_dict_from_dir_with_JE_tags(sample_ids, paths, JE_tags, read_n=None, **cuts):
+    ''' read dictionary of JetSamples '''
+    return read_inputs_to_sample_dict_from_dir_with_JE_tags(sample_ids, paths, JE_tags, jesa.JetSample, read_n=read_n, **cuts)
+
 def read_inputs_to_event_sample_dict_from_dir(sample_ids, paths, read_n=None, **cuts):
     ''' read dictionary of EventSamples '''
     return read_inputs_to_sample_dict_from_dir(sample_ids, paths, evsa.EventSample, read_n=read_n, **cuts)
